@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>drop-down-tree</title>
+    <script src="angular.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.css" rel="stylesheet">
+    <script type="text/javascript" src="js.js"></script>
+    <style type="text/css">
+        .tree{
+            width: 700px;
+            margin-left: 60px;
+        }
+        tree-view ul, tree-view li {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        tree-view .tree-view {
+            padding-left: 0px;
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+            top: 34px;
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: .25rem;
+            left: 0;
+            background: #fff;
+            max-height: 400px;
+            overflow-y: auto;
+            color: #373a3c;
+        }
+
+        tree-view {
+            position: relative;
+        }
+
+        tree-view input {
+            position: absolute;
+            z-index: 10
+        }
+
+        tree-view a {
+            cursor: pointer;
+            color: #373a3c;
+            font-size: 1.4rem;
+            display: block;
+            width: 100%;
+            background: url(img/spread.png) no-repeat left 5px;
+            padding-left: 15px
+        }
+
+        tree-view a:hover {
+            color: #262626;
+            background-color: #f5f5f5;
+        }
+
+        tree-view .dropout {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9;
+            height: 100%;
+            width: 100%;
+        }
+
+        tree-view a.subli {
+            color: #373a3c;
+            background-image: url(img/small.png);
+            background-position: left 0;
+        }
+    </style>
+</head>
+<body ng-controller="index">
+<div class="tree">
+    <tree-view class="col-xs-5" tree-data="data" return-data="returnData"></tree-view>
+</div>
+<script type="text/javascript">
+
+    /**
+     * app Module
+     * Description
+     */
+    angular.module('app', ['lttree']).controller('index', ['$scope', function ($scope) {
+        $scope.data = [{
+            id: 4101,
+            text: "制造费用",
+            children: [{
+                id: 410101,
+                text: "机物料消耗"
+            }, {
+                id: 410102,
+                text: "修理费"
+            }, {
+                id: 410103,
+                text: "职工薪酬"
+            }, {
+                id: 410104,
+                text: "折旧费"
+            }, {
+                id: 410105,
+                text: "办公费"
+            }, {
+                id: 410106,
+                text: "水电费"
+            }, {
+                id: 410107,
+                text: "停工损失"
+            }]
+        }, {
+            id: 4301,
+            text: "研发支出",
+            children: [{
+                id: 430101,
+                text: "费用化支出"
+            }, {
+                id: 430102,
+                text: "资本化支出",
+                children: [{
+                    id: 43010201,
+                    text: "WEB项目"
+                }, {
+                    id: 43010202,
+                    text: "IOS项目"
+                }, {
+                    id: 43010203,
+                    text: "Android项目"
+                }]
+            }]
+        }];
+    }])
+</script>
+</body>
+</html>
